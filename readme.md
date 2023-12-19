@@ -6,16 +6,7 @@
 
 [L7](https://github.com/antvis/L7) is a visualization grammar for dashboard building, data exploration and storytelling.
 
-This project was created to allow us to render [L7](https://github.com/antvis/L7) charts in streamlit. [Live Demo](https://antv-L7.streamlit.app/).
 
-![examples](https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*_GfqQoRCqQkAAAAAAAAAAAAADmJ7AQ/fmt.webp)
-
-[![PyPI version](https://badge.fury.io/py/streamlit-L7.svg)](https://badge.fury.io/py/streamlit-L7)
-[![Build Status](https://github.com/antvis/L7/workflows/build/badge.svg?branch=v5)](https://github.com/antvis//actions)
-[![Coverage Status](https://img.shields.io/coveralls/github/antvis/L7/v5.svg)](https://coveralls.io/github/antvis/L7?branch=v5)
-[![npm Version](https://img.shields.io/npm/v/@antv/L7.svg)](https://www.npmjs.com/package/@antv/L7)
-[![npm Download](https://img.shields.io/npm/dm/@antv/L7.svg)](https://www.npmjs.com/package/@antv/L7)
-[![npm License](https://img.shields.io/npm/l/@antv/L7.svg)](https://www.npmjs.com/package/@antv/L7)
 
 </div>
 
@@ -51,8 +42,6 @@ options = {
 
 L7(options=options, style=None, key="streamlit_L7")
 ```
-
-<img src="https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*XqCnTbkpAkQAAAAAAAAAAAAADmJ7AQ/fmt.webp" width="640" alt="example">
 
 
 ## API

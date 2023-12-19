@@ -4,20 +4,45 @@ import {
   withStreamlitConnection,
   ComponentProps,
 } from 'streamlit-component-lib';
-import { LarkMap,RasterLayer } from '@antv/larkmap';
+import { LarkMap, RasterLayer } from '@antv/larkmap';
+import type { IMapOptions } from './map'
+import { renderLayers, renderLegends, renderControls } from './map'
+
+
+const DefaultMapOptions: IMapOptions = {
+  mapType: 'Map',
+  layers: [{
+    type: 'raster',
+    source: {
+      data: 'https://tiles{1-3}.geovisearth.com/base/v1/img/{z}/{x}/{y}?format=webp&tmsIds=w&token=b2a0cfc132cd60b61391b9dd63c15711eadb9b38a9943e3f98160d5710aef788',
+      parser: { type: 'rasterTile', tileSize: 256, zoomOffset: 0 },
+    },
+  }],
+  controls: [],
+  legends: [],
+}
 
 const L7Component: React.FC<ComponentProps> = (props) => {
-  const { style, options } = props.args;
+  const { style, options } = props.args as { style: any; options: IMapOptions };
+  const newOptions = { ...DefaultMapOptions, ...options };
+  const { layers = [], controls = [], legends = [], ...SceneOptions } = newOptions;
   return (
-    <LarkMap style={{height:400,...style}} mapType = {options.mapType || 'map'} onSceneLoaded={() => {
-      Streamlit.setFrameHeight(style.height)
+    <LarkMap style={{ height: 400, ...style }} mapType={options.mapType || 'Map'} onSceneLoaded={(e) => {
+      Streamlit.setFrameHeight()
+      if (SceneOptions.onLoaded)
+        SceneOptions.onLoaded(e)
+
     }}>
-    <RasterLayer
-        source={{
-          data:   'https://tiles{1-3}.geovisearth.com/base/v1/img/{z}/{x}/{y}?format=webp&tmsIds=w&token=b2a0cfc132cd60b61391b9dd63c15711eadb9b38a9943e3f98160d5710aef788',
-          parser: { type: 'rasterTile', tileSize: 256, zoomOffset: 0 },
-        }}
-      />
+      {
+        renderLayers(layers)
+      }
+      {
+        renderLegends(legends)
+      }
+      {
+        renderControls(controls)
+      }
+
     </LarkMap>
 
   )
