@@ -1,0 +1,2 @@
+streamlit
+streamlit-l7==0.0.6

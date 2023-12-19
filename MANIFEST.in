@@ -1,0 +1,1 @@
+recursive-include streamlit_l7/frontend/build *
