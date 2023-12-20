@@ -127,7 +127,7 @@ Now, There is only one API for `streamlit-L7`, named `L7`, see the `options` in 
 
 | Property | Description                                                                                                     | Type                  | Default |
 | -------- | --------------------------------------------------------------------------------------------------------------- | --------------------- | ------- |
-| options  | the [options](https://L7.antv.antgroup.com/manual/core/api) for the visualization, say `chart.options(options)` | `L7options` \| `null` | -       |
+| options  | the [options](https://larkmap.antv.antgroup.com/components/lark-map) for the visualization, say `chart.options(options)` | `L7options` \| `null` | -       |
 | style    | the style of the container                                                                                      | `CSSProperties`       | -       |
 
 
@@ -136,6 +136,7 @@ Now, There is only one API for `streamlit-L7`, named `L7`, see the `options` in 
 - Build frontend code by running `npm run build` in fold `streamlit_L7/frontend`.
 - Run the example by running `streamlit run app.py` in root dir.
 
+## 
 
 ## License
 
