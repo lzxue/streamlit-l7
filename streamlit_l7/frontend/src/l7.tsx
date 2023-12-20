@@ -4,7 +4,7 @@ import {
   withStreamlitConnection,
   ComponentProps,
 } from 'streamlit-component-lib';
-import { LarkMap, RasterLayer } from '@antv/larkmap';
+import { LarkMap } from '@antv/larkmap';
 import type { IMapOptions } from './map'
 import { renderLayers, renderLegends, renderControls } from './map'
 
@@ -28,7 +28,7 @@ const L7Component: React.FC<ComponentProps> = (props) => {
   const { layers = [], controls = [], legends = [], ...SceneOptions } = newOptions;
   return (
     <LarkMap style={{ height: 400, ...style }} mapType={options.mapType || 'Map'} onSceneLoaded={(e) => {
-      Streamlit.setFrameHeight()
+      Streamlit.setFrameHeight((style.height || 400)+ 10)
       if (SceneOptions.onLoaded)
         SceneOptions.onLoaded(e)
 

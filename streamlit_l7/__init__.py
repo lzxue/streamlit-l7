@@ -1,7 +1,7 @@
 import os
 import streamlit.components.v1 as components
 
-_RELEASE = False
+_RELEASE = True
 
 if not _RELEASE:
     _component_func = components.declare_component(
@@ -110,7 +110,16 @@ if not _RELEASE:
                     "style": { "fill": 'blue', "fontSize": 12, "stroke": '#fff', "strokeWidth": 2 },
                 },
             },
-        ]
+        ],
+        "controls": [
+           {
+            "type": 'zoom',
+           },{
+             "type": 'scale',
+           },{
+              "type": 'fullscreen'
+           }
+        ],
     }
 
     l7(options=options, style={"height": 400}, key="streamlit-l7")
