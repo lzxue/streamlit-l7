@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="streamlit-l7",
-    version="0.1.1",
+    version="0.1.2",
     author="lzxue",
     author_email="lzx199065@gmail.com",
     description="Render L7 Map in Streamlit",

@@ -136,7 +136,11 @@ Now, There is only one API for `streamlit-L7`, named `L7`, see the `options` in 
 - Build frontend code by running `npm run build` in fold `streamlit_L7/frontend`.
 - Run the example by running `streamlit run app.py` in root dir.
 
-## 
+## publish
+
+- Build frontend code by running `npm run build` in fold `streamlit_L7/frontend`.
+-  Build python `python setup.py sdist bdist_wheel`
+-  publish `python -m twine upload  dist/*`
 
 ## License
 

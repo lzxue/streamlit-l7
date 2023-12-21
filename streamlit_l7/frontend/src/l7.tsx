@@ -25,9 +25,9 @@ const DefaultMapOptions: IMapOptions = {
 const L7Component: React.FC<ComponentProps> = (props) => {
   const { style, options } = props.args as { style: any; options: IMapOptions };
   const newOptions = { ...DefaultMapOptions, ...options };
-  const { layers = [], controls = [], legends = [], ...SceneOptions } = newOptions;
+  const { layers = [], controls = [], legends = [],onSceneLoaded, ...SceneOptions } = newOptions;
   return (
-    <LarkMap style={{ height: 400, ...style }} mapType={options.mapType || 'Map'} onSceneLoaded={(e) => {
+    <LarkMap style={{ height: 400, ...style }}  {...SceneOptions} onSceneLoaded={(e) => {
       Streamlit.setFrameHeight((style.height || 400)+ 10)
       if (SceneOptions.onLoaded)
         SceneOptions.onLoaded(e)
