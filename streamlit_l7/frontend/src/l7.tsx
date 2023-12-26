@@ -22,13 +22,47 @@ const DefaultMapOptions: IMapOptions = {
   legends: [],
 }
 
+const formatLayerConfig = (layers: any[], data: any, meta: any) => {
+  return layers.map((layer: any) => {
+    const { type, source } = layer;
+    const parser = source.parser;
+    if (type === 'raster') {
+      if (parser.type === 'rgb' || parser.type === 'raster') {
+        parser.width = meta.width;
+        parser.height = meta.height;
+        parser.extent = meta.extent;
+      }
+
+    }
+    return {
+      ...layer,
+      source: {
+        ...source,
+        data: data,
+        parser
+
+      }
+    }
+  })
+}
+
 const L7Component: React.FC<ComponentProps> = (props) => {
-  const { style, options } = props.args as { style: any; options: IMapOptions };
+  const { style, options, data, dataMeta } = props.args as { style: any; options: IMapOptions, data: any, dataMeta: any };
   const newOptions = { ...DefaultMapOptions, ...options };
-  const { layers = [], controls = [], legends = [],onSceneLoaded, ...SceneOptions } = newOptions;
+  if (data && dataMeta) {
+    let rasterData = data.dataTable.data.childData.map((item: any) => {
+      return item.values;
+    })
+    if(rasterData.length===1){
+      rasterData = rasterData[0];
+    }
+    newOptions.layers = formatLayerConfig(newOptions.layers || [], rasterData, dataMeta)
+  }
+  console.log(newOptions.layers)
+  const { layers = [], controls = [], legends = [], onSceneLoaded, ...SceneOptions } = newOptions;
   return (
     <LarkMap style={{ height: 400, ...style }}  {...SceneOptions} onSceneLoaded={(e) => {
-      Streamlit.setFrameHeight((style.height || 400)+ 10)
+      Streamlit.setFrameHeight((style.height || 400) + 10)
       if (SceneOptions.onLoaded)
         SceneOptions.onLoaded(e)
 
@@ -38,7 +72,9 @@ const L7Component: React.FC<ComponentProps> = (props) => {
       }
       {
         renderLegends(legends)
+
       }
+
       {
         renderControls(controls)
       }

@@ -7,7 +7,7 @@
     "build": " export NODE_OPTIONS=--openssl-legacy-provider && react-scripts build"
   },
   "dependencies": {
-    "@antv/l7": "^2.20.6",
+    "@antv/l7": "^2.20.11",
     "@antv/larkmap": "^1.4.10",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

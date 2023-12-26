@@ -5,7 +5,7 @@ import streamlit as st
 from demos import ST_DEMOS
 
 def main():
-    st.title("Streamlit L7 Map Demo")
+    st.markdown("### 🌏 Streamlit L7 Map Demo")
     with st.sidebar:
         st.header("Configuration")
         api_options = list(ST_DEMOS.keys())
@@ -29,8 +29,8 @@ if __name__ == "__main__":
         st.markdown("---")
         content = """
         ### Powered by
-        - [LarkMap A React toolkit for geospatial visualization based on L7.](https://github.com/antvis/larkmap)
-        - [L7 Large-scale WebGL-powered Geospatial data visualization analysis framework.](https://github.com/antvis/l7)
+        - [LarkMap A React toolkit](https://github.com/antvis/larkmap)
+        - [L7 Geospatial data visualization framework.](https://github.com/antvis/l7)
         """
         st.markdown(content)
         
