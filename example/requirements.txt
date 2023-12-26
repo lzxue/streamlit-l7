@@ -1,2 +1,6 @@
 streamlit
-streamlit-l7==0.0.6
+rasterio
+pyproj
+pandas
+pyarrow
+streamlit-l7
